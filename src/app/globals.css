@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --foreground: #f8fafc;
+  
+  --panel: rgba(24, 24, 27, 0.6);
+  --panel-border: rgba(255, 255, 255, 0.05);
+  
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --danger: #ef4444;
+  --success: #10b981;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden; /* App-like feel */
+  height: 100vh;
+  width: 100vw;
+}
+
+.glass-panel {
+  background: var(--panel);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Pattern background for builder */
+.builder-grid {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(1000px) rotateX(70deg) scale(2.5);
+  transform-origin: center bottom;
+  animation: drift 120s linear infinite;
+}
+
+@keyframes drift { 
+  from { background-position: 0 0; } 
+  to { background-position: 0 500px; } 
+}
+
+/* Heatmap animation */
+.heatmap {
+  background: radial-gradient(circle at 30% 70%, rgba(239, 68, 68, 0.4) 0%, transparent 20%), 
+              radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.4) 0%, transparent 30%); 
+  mix-blend-mode: screen; 
+  pointer-events: none;
+}
